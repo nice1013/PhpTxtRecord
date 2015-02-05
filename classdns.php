@@ -13,17 +13,17 @@
 //Setup a new zone 			---
 //$zones = new zone_records("cpaneluser", "pass", "website_to_login", "domain_of_records")
 
-// -- Pull all records             --- 
+// -- Pull all records      ---
 //$DNSrecord = $zones->getrecords();
 
 // -- To Add a record 		---
-//addTXT(varName,  VarValue)
-//$results = $zones->addTXT("test6",  "HelloWorld6");
+//addtxt(varName,  VarValue)
+//$results = $zones->addtxt("test6",  "HelloWorld6");
 
-// -- To Pull one record.
-//$record = $zones->getTXT("test6", $domainname, $DNSrecord);
+// -- To Pull one record.   --- Returns a Array of Address, Name, Line.
+//$record = $zones->gettxt("test6", $domainname, $DNSrecord);
 
-// -- To Delete one record. 
+// -- To Delete one record. ---
 //$DeletionResults = $zones->deleterecord($record["line"]);
 
 
@@ -180,7 +180,7 @@ class zone_records {
 	
 	
 	
-	public function CheckLine($line) {
+	public function checkline($line) {
 		if (!array_key_exists($line, $this->DNSrecords)) 
 		{
 		return 0;
@@ -197,7 +197,7 @@ class zone_records {
 	
 	
 	
-	public function addRecord2($type, $name, $target, $ttl) {
+	public function addrecord2($type, $name, $target, $ttl) {
 		if ($type!="A" && $type!="CNAME" && $type!="TXT") {
 			throw new Exception("Invalid type '$type'", 0); }
 			
@@ -220,7 +220,7 @@ class zone_records {
 	
 	
 	
-	public function addTXT($name, $text) {
+	public function addtxt($name, $text) {
 		
 		//Set type of record
 		$type = "TXT";
@@ -250,7 +250,7 @@ class zone_records {
 	
 	
 	//Retrieves Txt value. Returns false || Array["name", "txtdata"]
-	public function getTXT($txtrecordname, $domainname, $dnsrecord){
+	public function gettxt($txtrecordname, $domainname, $dnsrecord){
 		
 		//Combine query with domain name
 		$recordname = $txtrecordname . "." . $domainname . ".";
@@ -279,7 +279,7 @@ class zone_records {
 	}
 		
 		//Retrieves Txt value. Returns false || Array["name", "txtdata"]
-	public function getTXTbyLine($line, $zones){
+	public function gettxtbyline($line, $zones){
 		
 		
 		//Pull records.
@@ -311,7 +311,7 @@ class zone_records {
 		
 		
 	//Deletes Txt value. Returns false || Array["name", "txtdata"]
-	public function delTXT($TXTname, $domainname){
+	public function deltxt($TXTname, $domainname){
 		
 		//Combine query with domain name
 		$recordname = $TXTname + "." + $domainname ;
