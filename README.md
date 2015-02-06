@@ -14,16 +14,21 @@ I added an example file to show the various functions. <i>You will have to attac
 
 <h1>How does it work?</h1>
 
-When you add a txt record to a domain, you need two things. 
+When you add a txt record to a domain, you need two things:
 
 <ul>
 <li>Name of Record</li>
 <li>Text for record</li> 
 </ul> 
 
-For Dogecoin addresses 
-'Name of Record' = Username 
-'Text for record'  = Dogecoin Address
+For Dogecoin purposes: 
+<ul>
+<li>'Name of Record' = Username </li>
+<li>'Text for record'  = Dogecoin Address</li> 
+</ul> 
+
+
+
 
 In the end you'll have a DNS zone record like this ->
 
